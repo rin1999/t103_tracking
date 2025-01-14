@@ -729,12 +729,12 @@ bool EventBFTTracking::ProcessingNormal( TFile* iFile, int evnum )
              event.u1.push_back(ultof);
              event.y1.push_back(yltof);
              event.v1.push_back(vltof);
-             event.trMfiber_l1.push_back(mfiber_l1);
-             event.trMfiber_l2.push_back(mfiber_l2);
-             event.trMfiber_l3.push_back(mfiber_l3);
-             event.trMfiber_l4.push_back(mfiber_l4);
-             event.trMfiber_l5.push_back(mfiber_l5);
-             event.trMfiber_l6.push_back(mfiber_l6);
+             //event.trMfiber_l1.push_back(mfiber_l1);
+             //event.trMfiber_l2.push_back(mfiber_l2);
+             //event.trMfiber_l3.push_back(mfiber_l3);
+             //event.trMfiber_l4.push_back(mfiber_l4);
+             //event.trMfiber_l5.push_back(mfiber_l5);
+             //event.trMfiber_l6.push_back(mfiber_l6);
 
              //std::cout << "[log] " << nh << " hits are used in this track" << std::endl;
                      
@@ -752,29 +752,35 @@ bool EventBFTTracking::ProcessingNormal( TFile* iFile, int evnum )
 
                 // std::cout << int(fiber) << " : " << pos << std::endl;
                 
-                if(layerId==1){//この処理方法だとmfiber=4と4.5のresが一緒にされてしまう。どうしたものか。
+                if(layerId==1){//この処理方法だとmfiber=4と4.5のresが一緒にされてしまう。どうしたものか。-> 新しいbranchを追加して、そこに保存しておこう！
                    event.pos_l1[int(fiber)].push_back(pos);
                    event.res_l1[int(fiber)].push_back(res);
+                   event.trMfiber_l1.push_back(fiber);
                 }
                 if(layerId==2){
                    event.pos_l2[int(fiber)].push_back(pos);
                    event.res_l2[int(fiber)].push_back(res);
+                   event.trMfiber_l2.push_back(fiber);
                 }
                 if(layerId==3){
                    event.pos_l3[int(fiber)].push_back(pos);
                    event.res_l3[int(fiber)].push_back(res);
+                   event.trMfiber_l3.push_back(fiber);
                 }
                 if(layerId==4){
                    event.pos_l4[int(fiber)].push_back(pos);
                    event.res_l4[int(fiber)].push_back(res);
+                   event.trMfiber_l4.push_back(fiber);
                 }
                 if(layerId==5){
                    event.pos_l5[int(fiber)].push_back(pos);
                    event.res_l5[int(fiber)].push_back(res);
+                   event.trMfiber_l5.push_back(fiber);
                 }
                 if(layerId==6){
                    event.pos_l6[int(fiber)].push_back(pos);
                    event.res_l6[int(fiber)].push_back(res);
+                   event.trMfiber_l6.push_back(fiber);
                 }
              }
           }
@@ -910,11 +916,11 @@ void EventBFTTracking::InitializeEvent( void )
    event.y1.clear();
    event.v1.clear();
    event.trMfiber_l1.clear();
-   event.trMfiber_l1.clear();
-   event.trMfiber_l1.clear();
-   event.trMfiber_l1.clear();
-   event.trMfiber_l1.clear();
-   event.trMfiber_l1.clear();
+   event.trMfiber_l2.clear();
+   event.trMfiber_l3.clear();
+   event.trMfiber_l4.clear();
+   event.trMfiber_l5.clear();
+   event.trMfiber_l6.clear();
 
    for(int i=0; i<event.pos_l1.size(); i++) event.pos_l1[i].clear();
    for(int i=0; i<event.pos_l2.size(); i++) event.pos_l2[i].clear();
@@ -929,6 +935,7 @@ void EventBFTTracking::InitializeEvent( void )
    for(int i=0; i<event.res_l4.size(); i++) event.res_l4[i].clear();
    for(int i=0; i<event.res_l5.size(); i++) event.res_l5[i].clear();
    for(int i=0; i<event.res_l6.size(); i++) event.res_l6[i].clear();
+
 }
 
 bool EventBFTTracking::ProcessingEnd()
@@ -1079,6 +1086,13 @@ bool ConfMan:: InitializeHistograms()
    tree->Branch("res_l4", &event.res_l4);
    tree->Branch("res_l5", &event.res_l5);
    tree->Branch("res_l6", &event.res_l6);
+   
+   tree->Branch("trMfiber_l1", &event.trMfiber_l1);
+   tree->Branch("trMfiber_l2", &event.trMfiber_l2);
+   tree->Branch("trMfiber_l3", &event.trMfiber_l3);
+   tree->Branch("trMfiber_l4", &event.trMfiber_l4);
+   tree->Branch("trMfiber_l5", &event.trMfiber_l5);
+   tree->Branch("trMfiber_l6", &event.trMfiber_l6);
 
    //BFT Histograms
    for( int i=1; i<=NumOfLayersBFT; ++i ){
