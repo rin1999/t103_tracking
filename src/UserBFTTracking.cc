@@ -218,6 +218,8 @@ bool EventBFTTracking::ProcessingNormal( TFile* iFile, int evnum )
    int n_entry = tree->GetEntries();
    
    if(evnum==-1) evnum = n_entry;
+
+   int rejected_entry=0;
    
    for(int i_entry = 0; i_entry < n_entry; i_entry++){
          
@@ -670,7 +672,10 @@ bool EventBFTTracking::ProcessingNormal( TFile* iFile, int evnum )
       //else{continue;}
 
       
-      if(!(flag_utof&&flag_bref_upstream&&flag_bref_downstream)) continue;
+      if(!(flag_utof&&flag_bref_upstream&&flag_bref_downstream)){
+         rejected_entry++;
+         continue;
+      } 
       event.ltdc_utof_mean_twCorrected[0] = val_ltdc_utof_mean_corrected;
       event.ltdc_bref_twCorrected[0] = val_ltdc_bref_upstream_corrected;
       event.ltdc_bref_twCorrected[1] = val_ltdc_bref_downstream_corrected;
@@ -742,7 +747,7 @@ bool EventBFTTracking::ProcessingNormal( TFile* iFile, int evnum )
                 TrLTrackHit *hit=tp->GetHit(ih);
                 int layerId=hit->GetLayer()-PlOffsBFT; 
                 double fiber=hit->GetMeanFiber();
-                //event.layer.push_back(layerId);  
+                event.layer.push_back(layerId);  
                 double pos=hit->GetLocalHitPos(), res=hit->GetResidual();
 
                 HF1( 100*layerId+11, fiber-0.5 );
@@ -752,7 +757,7 @@ bool EventBFTTracking::ProcessingNormal( TFile* iFile, int evnum )
 
                 // std::cout << int(fiber) << " : " << pos << std::endl;
                 
-                if(layerId==1){//この処理方法だとmfiber=4と4.5のresが一緒にされてしまう。どうしたものか。-> 新しいbranchを追加して、そこに保存しておこう！
+                if(layerId==1){
                    event.pos_l1[int(fiber)].push_back(pos);
                    event.res_l1[int(fiber)].push_back(res);
                    event.trMfiber_l1.push_back(fiber);
