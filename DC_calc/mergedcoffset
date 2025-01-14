@@ -1,0 +1,97 @@
+#!/usr/bin/ruby
+
+def usage
+  STDERR << "Usage: #{File.basename $0} <bc> <layer#> <dcoffset.d> <dcoffset_fine.d|shift>\n"
+  exit 1
+end
+
+def read_shift_data(fine_file_name)
+  shift_data = []
+  file = File.open(fine_file_name, "r")
+  while line = file.gets
+    line.chomp!
+    data = line.split
+    data.each do |x|
+      shift_data << x.to_f
+    end
+  end
+  file.close
+  shift_data
+end
+
+
+#table_ch = {
+#  0 => { "x" => 48,  "xp" => 48,  "u" => 64,  "up" => 64 },
+#  1 => { "x" => 48,  "xp" => 48,  "y" => 32,  "u" => 48 },
+#  2 => { "x" => 128, "xp" => 128, "y" => 96, "yp" => 96 },
+#  3 => { "x" => 32,  "xp" => 32,  "y" => 16, "yp" => 16 }
+#}
+
+table_ch = {
+  "dc" =>{ "1" => 11, "2" => 10, "3" => 11 },
+
+#table_ch = {
+#  "bc" =>{ "1" => 256, "2" => 256, "3" => 256,  "4" => 256,  "5" => 256,  "6" => 256,
+#	   "7" => 256, "8" => 256, "9" => 256, "10" => 256, "11" => 256, "12" => 256,
+#    	  "113" =>  64,"114" =>  64,"115" =>  64, "116" =>  64, "117" =>  64, "118" =>  64,
+#    	  "119" =>  48,"120" =>  48,"121" =>  48, "122" =>  48, "123" =>  48, "124" =>  48 },
+#  "sdc" =>{ "1" => 64, "2" => 64, "3" => 64, "4" => 64, 
+#	    "5" => 96, "6" => 96, "7" => 96, "8" => 96, 
+#	    "9" => 96, "10"=> 96, 
+#	   "31" => 120, "32" => 108, "33" => 120, "34" => 120, "35" => 108, "36" => 120, 
+#	   "37" => 120, "38" => 108, "39" => 120, "40" => 120, "41" => 108, "42" => 120, 
+#	}
+
+}
+
+# main
+
+if ARGV.size < 4
+  usage
+end
+
+dc = ARGV[0]
+
+if (dc != "dc")
+//if (dc != "bc" && dc != "sdc")
+  usage
+end
+
+layer = ARGV[1]
+num_ch = table_ch[dc][layer]
+
+if ARGV[3].to_f != 0
+  shift_data = []
+  shift = ARGV[3].to_f
+  num_ch.times do
+    shift_data << shift
+  end
+else
+  shift_data = read_shift_data(ARGV[3])
+  if shift_data.size != num_ch
+    STDERR << "the number of channels does not match!\n"
+    exit 2
+  end
+end
+
+file = File.open(ARGV[2], "r")
+if dc == "bdc"
+  if layer.to_i <= 9
+    layer = "10" + layer
+  else
+    layer = "1" + layer
+  end
+end
+
+while line = file.gets
+  line.chomp!
+  data = line.split
+  if data[0] == layer
+    printf "%d\t%d\t%.6E\t%.6f\n", data[0], data[1], data[2], data[3].to_f + shift_data[data[1].to_i-1]
+  else
+    print line, "\n"
+  end
+end
+file.close
+
+exit 0

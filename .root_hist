@@ -1,0 +1,498 @@
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_full.root")
+tree->Print()
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_1000000events.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/residual_analysis.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/residual_analysis.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+tree->Scan("res_l1")
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLayer1.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLayer2.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLaye3.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLaye3.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLayer3.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLayer4.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLayer5.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_woLayer6.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.a
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers.root", 10000000)
+tree->Print()
+tree->Scan("pos_l1")
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers.root")
+tree->Scan("pos_l1")
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_1origin.root")
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000000)
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_0origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root", 1000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_0origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_0origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_0origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_0origin.root", 100000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+tree->Scan("id_bft_l1")
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+tree->Scan("id_bft_l1")
+tree->Scan("ltdc_bft_l1")
+tree->Print()
+tree->Scan("ltdc_bft_l1")
+tree->Print()
+tree->Scan("layer")
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Scan("layer")
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)\
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/prevPosCalc/run1230_1000000events_allLayers.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Scan("layer")
+tree->Scan("layer")
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000000)
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_1000000events.root")
+tree->Print()
+tree->Scan("ltdc_bref_l")
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_1000000events.root")
+tree->Print()
+tree->Draw("ltdc_bref_l")
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_1000000events.root")
+tree->Draw("ltdc_bref_l")
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_1000000events.root")
+tree->Print()
+.q
+.x macro/bref_ltdc.C("after_eventbuild00/run1230_1000000events.root")
+.q
+.x macro/bref_ltdc.C("after_eventbuild00/run1230_full.root")
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_full.root")
+tree->Print()
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_full.root")
+tree->Scan("ltdc_bft_l1:ltdc_bft:l2")
+tree->Scan("ltdc_bft_l1:ltdc_bft_l2")
+tree->Scan("ltltdc_bref_l:dc_bft_l1:ltdc_bft_l2")
+tree->Scan("ltdc_bref_l:ltdc_bft_l1:ltdc_bft_l2")
+tree->Print()
+tree->Scan("ltdc_bref_l:ltdc_bft_l1:id_bft_l1")
+tree->Scan("ltdc_bref_l")
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_full.root")
+tree->Scan("ltdc_bref_l:ltdc_bft_l1:id_bft_l1")
+tree->Scan("ltdc_bref_l:ltdc_bref_r:ltdc_bft_l1:id_bft_l1")
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_full.root")
+tree->Print()
+tree->Scan("ltdc_bft_l1>>(1,1)")
+tree->Scan("ltdc_bft_l1>>(120,120)")
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+TFile *_file0 = TFile::Open("after_eventbuild00/run1230_full.root")
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 1000000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 1000000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 1000000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 1000000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 1000000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Print()
+tree->Scan("ltdc_bft_l1[2]"
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Scan("ltdc_bft_l1[2]")
+tree->Scan("ltdc_bft_l1 >> (1,2)")
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Print()
+tree->Scan("nhits_bref")
+tree->Print()
+tree->Scan("mfiber")
+tree->Scan("layer:mfiber")
+tree->Scan("mfiber[0]")
+tree->Scan("mfiber[1]")
+tree->Scan("mfiber[5]")
+tree->Scan("mfiber[6]")
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 10000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 100000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 1000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 1000000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.q
+.x macro/bft_efficiency.C("after_eventbuild00/run1230_full.root", 500000)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000000000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree -> Print()
+tree -> Scan("ltdc_bft_l1")
+tree -> Scan("ltdc_bft_l1[0]")
+tree -> Scan("ltdc_bft_l1[120]")
+tree -> Scan("ltdc_bft_l1")
+tree -> Scan("ltdc_bft_l1")
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000)
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/ana.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 1000000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Print()
+tree->Scan("ltdc_bref[0]")
+tree->Scan("ltdc_bref")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Scan("x0:res")
+tree->Scan("res")
+tree->Scan("x0:res_l1")
+tree->Print()
+tree->Scan("ltdc_bref[1]")
+.q
+tree->Scan("ltdc_bref[1]")
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.1
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 100000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Scan("ltdc_bref[0]:ltdc_bref[1]")
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.q
+TFile *_file0 = TFile::Open("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root")
+tree->Print()
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000000)
+.q
+.x macro/print_branches.C("root_analyzed/newPosCalc/run1230_1000000events_allLayers_fiberdiameter055_1origin.root", 10000)

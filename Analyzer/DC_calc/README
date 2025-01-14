@@ -1,0 +1,32 @@
+###Drift time time zero check
+#showEachDriftTimeBC34.C
+->output file : bc34_layer**_offset_1.d (1-12)
+
+#showEachDriftTimeSDC12.C
+->output file : sdc12_layer**_offset_1.d (1-10)
+
+#showEachDriftTimeSDC34.C
+->output file : sdc34_layer**_offset_1.d (1-12)
+
+
+### Marge drift time
+./mk***_offset.sh <Old file name> > & <New file name>
+(bc3, bc4, sdc1, sdc2, sdc3, sdc4)
+
+
+###Drift velocity fitting
+#calcInitXTparBC3.C
+->output file : xtInitpar_bc***.d (113-118)
+
+#calcInitXTparBC4.C
+->output file : xtInitpar_bc***.d (119-124)
+
+#calcInitXTparSDC1.C
+->output file : xtInitpar_sdc**.d (1-4)
+
+#calcInitXTparSDC2.C
+->output file : xtInitpar_sdc**.d (4-10)
+
+#calcInitXTparSDC34.C
+->output file : xtInitpar_sdc**.d (31-42)
+

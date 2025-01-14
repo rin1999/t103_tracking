@@ -1,0 +1,43 @@
+hadd -f data_file01.root data00/run0602_eb00.root data00/run0603_eb00.root data00/run0604_eb00.root data00/run0605_eb00.root data00/run0606_eb00.root
+
+hadd -f data_file02.root data01/run0602_eb01.root data01/run0603_eb01.root data01/run0604_eb01.root data01/run0605_eb01.root data01/run0606_eb01.root
+
+hadd -f data_file03.root data00/run0607_eb00.root data00/run0608_eb00.root data00/run0610_eb00.root data00/run0611_eb00.root data00/run0612_eb00.root
+
+hadd -f data_file04.root data01/run0607_eb01.root data01/run0608_eb01.root data01/run0610_eb01.root data01/run0611_eb01.root data01/run0612_eb01.root
+
+hadd -f data_file05.root data00/run0620_eb00.root data00/run0621_eb00.root data00/run0622_eb00.root data00/run0623_eb00.root data00/run0624_eb00.root
+
+hadd -f data_file06.root data01/run0620_eb01.root data01/run0621_eb01.root data01/run0622_eb01.root data01/run0623_eb01.root data01/run0624_eb01.root
+
+hadd -f data_file07.root data00/run0634_eb00.root data00/run0635_eb00.root data00/run0636_eb00.root data00/run0637_eb00.root data00/run0640_eb00.root
+
+hadd -f data_file08.root data01/run0634_eb01.root data01/run0635_eb01.root data01/run0636_eb01.root data01/run0637_eb01.root data01/run0640_eb01.root
+
+hadd -f data_file09.root data00/run0641_eb00.root data00/run0642_eb00.root data00/run0643_eb00.root data00/run0644_eb00.root data00/run0645_eb00.root
+
+hadd -f data_file10.root data01/run0641_eb01.root data01/run0642_eb01.root data01/run0643_eb01.root data01/run0644_eb01.root data01/run0645_eb01.root
+
+hadd -f data_file11.root data00/run0646_eb00.root data00/run0647_eb00.root data00/run0648_eb00.root data00/run0649_eb00.root data00/run0650_eb00.root
+
+hadd -f data_file12.root data01/run0646_eb01.root data01/run0647_eb01.root data01/run0648_eb01.root data01/run0649_eb01.root data01/run0650_eb01.root
+
+hadd -f data_file13.root data00/run0651_eb00.root data00/run0635_eb00.root data00/run0652_eb00.root data00/run0653_eb00.root data00/run0655_eb00.root
+
+hadd -f data_file14.root data01/run0651_eb01.root data01/run0635_eb01.root data01/run0652_eb01.root data01/run0653_eb01.root data01/run0655_eb01.root
+
+hadd -f data_file15.root data00/run0659_eb00.root data00/run0660_eb00.root data00/run0661_eb00.root data00/run0664_eb00.root data00/run0665_eb00.root
+
+hadd -f data_file16.root data01/run0659_eb01.root data01/run0660_eb01.root data01/run0661_eb01.root data01/run0664_eb01.root data01/run0665_eb01.root
+
+hadd -f data_file17.root data00/run0668_eb00.root data00/run0669_eb00.root data00/run0670_eb00.root data00/run0671_eb00.root data00/run0672_eb00.root
+
+hadd -f data_file18.root data01/run0668_eb01.root data01/run0669_eb01.root data01/run0670_eb01.root data01/run0671_eb01.root data01/run0672_eb01.root
+
+hadd -f data_file19.root data00/run0673_eb00.root data00/run0674_eb00.root data00/run0675_eb00.root data00/run0676_eb00.root data00/run0677_eb00.root 
+
+hadd -f data_file20.root data01/run0673_eb01.root data01/run0674_eb01.root data01/run0675_eb01.root data01/run0676_eb01.root data01/run0677_eb01.root 
+
+
+hadd -f rootfile00_0.root rootfile01_0.root rootfile02_0.root rootfile03_0.root rootfile04_0.root rootfile05_0.root rootfile06_0.root rootfile07_0.root rootfile08_0.root rootfile09_0.root rootfile10_0.root rootfile11_0.root rootfile12_0.root rootfile13_0.root rootfile14_0.root rootfile15_0.root rootfile16_0.root rootfile17_0.root rootfile18_0.root rootfile19_0.root rootfile20_0.root 
+
