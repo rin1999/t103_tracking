@@ -646,8 +646,8 @@ bool EventBFTTracking::ProcessingNormal( TFile* iFile, int evnum )
       const double p_bref_upstream[3]   = {21.250, 4.520, -0.059};
       const double p_bref_downstream[3] = {20.000, 5.750, -0.016};
       const double range_ltdc_utof_mean[2]       = {-10., 10};
-      const double range_ltdc_bref_upstream[2]   = {-0.584, 0.584};
-      const double range_ltdc_bref_downstream[2] = {-0.534, 0.534};
+      const double range_ltdc_bref_upstream[2]   = {-1.168, 1.168};
+      const double range_ltdc_bref_downstream[2] = {-1.068, 1.068};
       const double range_tot_utof_mean[2]        = {0.001, 10000.};
       const double range_tot_bref_upstream[2]    = {   8., 10000.};
       const double range_tot_bref_downstream[2]  = {  10., 10000.};

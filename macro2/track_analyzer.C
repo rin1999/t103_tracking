@@ -127,7 +127,8 @@ void track_analyzer(const char* filename, int max_entries){
    vector<double>*         u0     = nullptr;
    vector<double>*         v0     = nullptr;
    vector<vector<double>>* pos[nlayer] = {nullptr};
-   vector<vector<double>>* res[nlayer] = {nullptr}; 
+   vector<vector<double>>* res[nlayer] = {nullptr};
+   vector<double>          trMfiber[nlayer] = {nullptr}; 
    TBranch* Bcnh    = nullptr;
    TBranch* Bcsize  = nullptr;
    TBranch* Bmfiber = nullptr;
@@ -141,6 +142,7 @@ void track_analyzer(const char* filename, int max_entries){
    TBranch* Bv0     = nullptr;
    TBranch* Bpos[nlayer] = {nullptr};
    TBranch* Bres[nlayer] = {nullptr};   
+   TBranch* BtrMfiber[nlayer] = {nullptr};
 
    const double parameter0[nlayer] = {-109.378, -109.463, -110.283, -110.768, -110.452, -111.141};
    const double parameter1[nlayer] = {   5.771,    9.796,    9.799,    9.995,   10.606,   11.013};
@@ -182,6 +184,7 @@ void track_analyzer(const char* filename, int max_entries){
    for(int ilayer=0; ilayer<nlayer; ilayer++){
       tree->SetBranchAddress(Form("pos_l%d", ilayer+1), &pos[ilayer], &Bpos[ilayer]);
       tree->SetBranchAddress(Form("res_l%d", ilayer+1), &res[ilayer], &Bres[ilayer]);
+      tree->SetBranchAddress(Form("trMfiber_l%d", ilayer+1), &trMfiber[ilayer], &BtrMfiber[ilayer]);
    }
 
 // generating histograms
@@ -226,6 +229,12 @@ void track_analyzer(const char* filename, int max_entries){
    if(max_entries<0||max_entries>nentries) max_entries = nentries;
 
    cout << "[log] " << max_entries << " events will be processed." << endl;
+
+   // temporary
+   int target_layer = 1;
+   int target_fiber = 100;
+   int count_targethit = 0;
+   int count_otherlayers =0;
 
    for(int ientry=0; ientry<nentries; ientry++){
       if(ientry>=max_entries) break;

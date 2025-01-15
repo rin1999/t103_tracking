@@ -30,9 +30,7 @@ const double MaxCombi = 1.0e6;
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
-int LocalTrackSearch( const TrHitContainer * HC,
-		      std::vector <TrLocalTrack *> &TrackCont, 
-		      int NumOfLayers, int MinNumOfHits)
+int LocalTrackSearch( const TrHitContainer * HC, std::vector <TrLocalTrack *> &TrackCont, int NumOfLayers, int MinNumOfHits)
 {
   static const std::string funcname = "[LocalTrackSearch]";
 
