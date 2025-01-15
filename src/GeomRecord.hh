@@ -106,30 +106,6 @@ public:
       }
       return position;
       
-
-      // fiberIDが0スタートの場合
-      /*
-      double position;
-      double dd_long = dd_*1.5;
-      double dd_short= dd_*0.5;
-      if (std::floor(wire) == wire){ // wireが整数の場合
-         if ((int)wire % 2 == 0){ // wireが偶数の場合
-            position = dd_long * wire / 2.0 + dd_short * wire / 2.0;
-         }
-         else{ // wireが奇数の場合
-            position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0 + dd_short;
-         }
-      }
-      else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-         if ((int)std::floor(wire) % 2 == 0){ // wireの整数部分が偶数の場合
-            position = dd_long * (double)std::floor(wire) / 2.0 + dd_short * (double)std::floor(wire) / 2.0 + dd_short / 2.0;
-         }
-         else{ // wireの整数部分が奇数の場合
-            position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_short + dd_long / 2.0;
-         }
-      }
-      return position;
-      */
    }
    
    double WirePos( double wire ) const { 
