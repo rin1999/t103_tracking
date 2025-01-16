@@ -12,6 +12,7 @@ Made for analyzing hits of BFT
 #include "TGraphErrors.h"
 #include "TPaveText.h"
 #include "TMath.h"
+#include "TSystem.h"
 
 #include <iostream>
 #include <vector>
@@ -64,6 +65,10 @@ void draw_th2f(TCanvas* canvas, TH2F* hist, string savepath){
 }
 
 void track_analyzer(const char* filename, int max_entries){
+
+   //gSystem->SetErrorIgnoreLevel(kError); // エラー表示を強化
+   //gDebug = 3; // デバッグレベルを最大化
+   
 
    cout << "[log] Start initializing" << endl;
 
@@ -128,7 +133,7 @@ void track_analyzer(const char* filename, int max_entries){
    vector<double>*         v0     = nullptr;
    vector<vector<double>>* pos[nlayer] = {nullptr};
    vector<vector<double>>* res[nlayer] = {nullptr};
-   vector<double>          trMfiber[nlayer] = {nullptr}; 
+   vector<double>*         trMfiber[nlayer] = {nullptr}; 
    TBranch* Bcnh    = nullptr;
    TBranch* Bcsize  = nullptr;
    TBranch* Bmfiber = nullptr;
@@ -202,13 +207,17 @@ void track_analyzer(const char* filename, int max_entries){
    TH2F* h_xy0 = new TH2F("h_xy0", "Track position at UTOF;x [mm];y [mm]", 200, -200., 200., 200, -200., 200.);
    TH2F* h_uv0 = new TH2F("h_uv0", "Track slope at UTOF;dx/dz;dy/dz", 200, -1., 1., 200, -1., 1.);
    TH1F* h_res[nlayer][nfiber];
+   TH1F* h_res_plus05[nlayer][nfiber];
    TH1F* h_res_layer[nlayer];
    TH1F* h_pos[nlayer][nfiber];
+   TH1F* h_pos_plus05[nlayer][nfiber];
    for(int ilayer=0; ilayer<nlayer; ilayer++){
       h_res_layer[ilayer] = new TH1F(Form("h_res_l%d",ilayer+1), Form("Residual of Layer %d;residual [mm];counts",ilayer+1), 200, -1., 1.);
       for(int ifiber=0; ifiber<nfiber; ifiber++){
          h_res[ilayer][ifiber] = new TH1F(Form("h_res_l%d_f%d",ilayer+1,ifiber+1), Form("Residual of Layer %d, Fiber %d;residual [mm];counts",ilayer+1,ifiber+1), 20, -1., 1.);
          h_pos[ilayer][ifiber] = new TH1F(Form("h_pos_l%d_f%d",ilayer+1,ifiber+1), Form("Position of Layer %d, Fiber %d;position [mm];counts",ilayer+1,ifiber+1), 20, -1., 1.);
+         h_res_plus05[ilayer][ifiber] = new TH1F(Form("h_res_plus05_l%d_f%d",ilayer+1,ifiber+1), Form("Residual of Layer %d, Fiber %d + 0.5;residual [mm];counts",ilayer+1,ifiber+1), 20, -1., 1.);
+         h_pos_plus05[ilayer][ifiber] = new TH1F(Form("h_pos_plus05_l%d_f%d",ilayer+1,ifiber+1), Form("Position of Layer %d, Fiber %d + 0.5;position [mm];counts",ilayer+1,ifiber+1), 20, -1., 1.);
       }
    }
    TGraphErrors* g_res_fiber[nlayer];
@@ -242,7 +251,7 @@ void track_analyzer(const char* filename, int max_entries){
       tree->GetEntry(ientry);
       h_nt -> Fill(nt);
 
-      // トラック無し、あるいはマルチトラックはスキップ
+      // シングルトラック以外はスキップ
       if(nt!=1) continue;
 
       bool flag_utof   = false;
@@ -272,31 +281,44 @@ void track_analyzer(const char* filename, int max_entries){
       }
 
 
+      for(int it=0; it<nt; it++){
+         h_chisqr -> Fill(chisqr->at(it));
+         h_xy0 -> Fill(x0->at(it), y0->at(it));
+         h_uv0 -> Fill(u0->at(it), v0->at(it));
+      }
 
-      h_chisqr -> Fill(chisqr->at(0));
-      h_xy0 -> Fill(x0->at(0), y0->at(0));
-      h_uv0 -> Fill(u0->at(0), v0->at(0));
+
+      //for(int ilayer=0; ilayer<nlayer; ilayer++){
+      //   for(int ifiber=0; ifiber<nfiber; ifiber++){
+      //      if(0<res[ilayer]->at(ifiber).size()&&0<pos[ilayer]->at(ifiber).size()){
+      //         h_res[ilayer][ifiber] -> Fill(res[ilayer]->at(ifiber).at(0));
+      //         h_pos[ilayer][ifiber] -> Fill(pos[ilayer]->at(ifiber).at(0));
+      //         h_res_layer[ilayer] -> Fill(res[ilayer]->at(ifiber).at(0));
+      //      }
+      //   }
+      //}
 
       for(int ilayer=0; ilayer<nlayer; ilayer++){
-         for(int ifiber=0; ifiber<nfiber; ifiber++){
-            if(0<res[ilayer]->at(ifiber).size()&&0<pos[ilayer]->at(ifiber).size()){
-               h_res[ilayer][ifiber] -> Fill(res[ilayer]->at(ifiber).at(0));
-               h_pos[ilayer][ifiber] -> Fill(pos[ilayer]->at(ifiber).at(0));
-               h_res_layer[ilayer] -> Fill(res[ilayer]->at(ifiber).at(0));
+         for(int it=0; it<nt; it++){
+            double mfiber = trMfiber[ilayer]->at(it);
+            if(mfiber==std::floor(mfiber)){ // mfiberが整数値の時の処理
+               int ifiber = (int) mfiber;
+               //cout<< res[ilayer]->at(ifiber+1).size() << res[ilayer]->at(ifiber).size() << res[ilayer]->at(ifiber-1).size() <<endl;
+               h_res[ilayer][ifiber] -> Fill(res[ilayer]->at(ifiber).at(it));
+               h_pos[ilayer][ifiber] -> Fill(pos[ilayer]->at(ifiber).at(it));
+               h_res_layer[ilayer]   -> Fill(res[ilayer]->at(ifiber).at(it));
+               
+            }
+            else if (mfiber==std::floor(mfiber)+0.5){ // mfiberが半整数値の時の処理
+               int ifiber = (int) mfiber; // 0.5<=mfiber<=255.5 -> 0<=ifiber<=255
+               //cout<< res[ilayer]->at(ifiber+1).size() << res[ilayer]->at(ifiber).size() << res[ilayer]->at(ifiber-1).size() <<endl;
+               h_res_plus05[ilayer][ifiber] -> Fill(res[ilayer]->at(ifiber).at(it));
+               h_pos_plus05[ilayer][ifiber] -> Fill(pos[ilayer]->at(ifiber).at(it));
+               h_res_layer[ilayer]   -> Fill(res[ilayer]->at(ifiber).at(it));
+               
             }
          }
       }
-      
-
-      /*
-      for(int ilayer=0; ilayer<nlayer; ilayer++){
-         for(int ifiber=0; ifiber<nfiber; ifiber++){
-            int size_ltdc_bft = ltdc_bft[ilayer]->at(ifiber).size();
-            
-         }
-      }
-      */
-
    }
 
 
@@ -371,11 +393,15 @@ void track_analyzer(const char* filename, int max_entries){
 
    for(int ilayer=0; ilayer<nlayer; ilayer++){
       for(int ifiber=0; ifiber<nfiber; ifiber++){
-         double mean   = h_res[ilayer][ifiber] -> GetMean();
+         double mean     = h_res[ilayer][ifiber] -> GetMean();
          double mean_err = h_res[ilayer][ifiber] -> GetMeanError();
          int npoint    = g_res_fiber[ilayer] -> GetN();
          g_res_fiber[ilayer] -> SetPoint(npoint, ifiber+1, mean);
          g_res_fiber[ilayer] -> SetPointError(npoint, 0, mean_err);
+         mean     = h_res_plus05[ilayer][ifiber] -> GetMean();
+         mean_err = h_res_plus05[ilayer][ifiber] -> GetMeanError();
+         g_res_fiber[ilayer] -> SetPoint(npoint+1, ifiber+1.5, mean);
+         g_res_fiber[ilayer] -> SetPointError(npoint+1, 0, mean_err);
       }
    }
    c->SetCanvasSize(1800, 600);
@@ -396,6 +422,53 @@ void track_analyzer(const char* filename, int max_entries){
       c -> Clear();
       gStyle -> SetTitleSize(0.05, "t");
    }
+   gStyle -> SetTitleSize(0.07, "t"); 
+   g_res_fiber[0] -> SetTitle(Form("Residual for each fiber (layer %d);fiber ID;Residual", 1));
+   g_res_fiber[0] -> GetXaxis() -> SetRangeUser(110,150);
+   g_res_fiber[0] -> GetYaxis() -> SetRangeUser(-0.5,0.5);
+   g_res_fiber[0] -> GetXaxis() -> SetLabelSize(0.07);
+   g_res_fiber[0] -> GetYaxis() -> SetLabelSize(0.07);
+   g_res_fiber[0] -> GetXaxis() -> SetTitleOffset(1.05);
+   g_res_fiber[0] -> GetXaxis() -> SetTitleSize(0.07);
+   g_res_fiber[0] -> GetYaxis() -> SetTitleOffset(0.6);
+   g_res_fiber[0] -> GetYaxis() -> SetTitleSize(0.07);
+   g_res_fiber[0] -> SetMarkerStyle(10);
+   g_res_fiber[0] -> Draw("");
+   c -> Print(savepath.c_str());
+   c -> Clear();
+   gStyle -> SetTitleSize(0.05, "t");
+
+   gStyle -> SetTitleSize(0.07, "t"); 
+   g_res_fiber[3] -> SetTitle(Form("Residual for each fiber (layer %d);fiber ID;Residual", 4));
+   g_res_fiber[3] -> GetXaxis() -> SetRangeUser(50,150);
+   g_res_fiber[3] -> GetYaxis() -> SetRangeUser(-0.5,0.5);
+   g_res_fiber[3] -> GetXaxis() -> SetLabelSize(0.07);
+   g_res_fiber[3] -> GetYaxis() -> SetLabelSize(0.07);
+   g_res_fiber[3] -> GetXaxis() -> SetTitleOffset(1.05);
+   g_res_fiber[3] -> GetXaxis() -> SetTitleSize(0.07);
+   g_res_fiber[3] -> GetYaxis() -> SetTitleOffset(0.6);
+   g_res_fiber[3] -> GetYaxis() -> SetTitleSize(0.07);
+   g_res_fiber[3] -> SetMarkerStyle(10);
+   g_res_fiber[3] -> Draw("");
+   c -> Print(savepath.c_str());
+   c -> Clear();
+   gStyle -> SetTitleSize(0.05, "t");
+
+   gStyle -> SetTitleSize(0.07, "t"); 
+   g_res_fiber[5] -> SetTitle(Form("Residual for each fiber (layer %d);fiber ID;Residual", 6));
+   g_res_fiber[5] -> GetXaxis() -> SetRangeUser(0,80);
+   g_res_fiber[5] -> GetYaxis() -> SetRangeUser(-0.5,0.5);
+   g_res_fiber[5] -> GetXaxis() -> SetLabelSize(0.07);
+   g_res_fiber[5] -> GetYaxis() -> SetLabelSize(0.07);
+   g_res_fiber[5] -> GetXaxis() -> SetTitleOffset(1.05);
+   g_res_fiber[5] -> GetXaxis() -> SetTitleSize(0.07);
+   g_res_fiber[5] -> GetYaxis() -> SetTitleOffset(0.6);
+   g_res_fiber[5] -> GetYaxis() -> SetTitleSize(0.07);
+   g_res_fiber[5] -> SetMarkerStyle(10);
+   g_res_fiber[5] -> Draw("");
+   c -> Print(savepath.c_str());
+   c -> Clear();
+   gStyle -> SetTitleSize(0.05, "t");
    c->SetCanvasSize(600,600);
    
 

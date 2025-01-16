@@ -69,6 +69,16 @@ public:
         break;
     }
   }
+  int GetNLayersNotUsedBFT( void ) const {
+    int count=0;
+    if(mfiber_l1_==-1.0) count++;
+    if(mfiber_l2_==-1.0) count++;
+    if(mfiber_l3_==-1.0) count++;
+    if(mfiber_l4_==-1.0) count++;
+    if(mfiber_l5_==-1.0) count++;
+    if(mfiber_l6_==-1.0) count++;
+    return count;
+  }
   bool GoodForTracking( void ) const { return gftstatus_; }
   bool GoodForTracking( bool status )
   { bool ret=gftstatus_; gftstatus_=status; return ret; } 

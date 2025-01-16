@@ -14,7 +14,7 @@ struct TrPairPlaneInfo
   double CellSize;
 };
 
-const int MinNumOfHitsBFT = 5;
+const int MinNumOfHitsBFT = 6;
 
 //Timing Ranges
 const double MinTimeTr[13] = {

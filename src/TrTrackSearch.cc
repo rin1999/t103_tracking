@@ -34,7 +34,7 @@ int LocalTrackSearch( const TrHitContainer * HC, std::vector <TrLocalTrack *> &T
 {
   static const std::string funcname = "[LocalTrackSearch]";
 
-  std::vector < std::vector <TrPairHitCluster *> > CandCont;
+  std::vector < std::vector <TrPairHitCluster *> > CandCont; //[6][#of cluster]
   CandCont.resize(NumOfLayers);
 
   for( int i=0; i<NumOfLayers; ++i ){
@@ -298,14 +298,14 @@ bool MakeUnPairPlaneHitCluster( const TrHitContainer & HC,
       int multi = hit->GetDriftLengthSize();
 
       for (int m=0; m<multi; m++) {
-	if( !(hit->rangecheck(m)) ) continue;
+        	if( !(hit->rangecheck(m)) ) continue;
 
-	double wp=hit->GetMPosition();
-	double dl=hit->GetDriftLength(m);
+        	double wp=hit->GetMPosition();
+        	double dl=hit->GetDriftLength(m);
 
-	Cont.push_back( new TrPairHitCluster( new TrLTrackHit(hit,wp,m) ) );
-	// Cont.push_back( new TrPairHitCluster( new TrLTrackHit(hit,wp+dl,m) ) );
-	// Cont.push_back( new TrPairHitCluster( new TrLTrackHit(hit,wp-dl,m) ) );
+        	Cont.push_back( new TrPairHitCluster( new TrLTrackHit(hit,wp,m) ) );
+        	// Cont.push_back( new TrPairHitCluster( new TrLTrackHit(hit,wp+dl,m) ) );
+        	// Cont.push_back( new TrPairHitCluster( new TrLTrackHit(hit,wp-dl,m) ) );
       }
     }
   }
@@ -315,6 +315,7 @@ bool MakeUnPairPlaneHitCluster( const TrHitContainer & HC,
 
 std::vector< std::vector<int> > 
 makeindex( int ndim_org, int minimumHit, int ndim, const int *index1 )
+ //NumOfLayers, MinNumOfHits, NumOfLayers, &(nCombi[0]) 
 {
   if(ndim==1){
     std::vector< std::vector<int> > index2;
