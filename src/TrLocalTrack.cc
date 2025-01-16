@@ -90,9 +90,11 @@ bool TrLocalTrack::DoFit( void )
       double zz = geomMan.GetLocalZ( lnum );
       double aa = hitp->GetTiltAngle()*Deg2Rad;
 
-      z.push_back( zz ); w.push_back( 1./(ww*ww) ); 
+      z.push_back( zz ); 
+      w.push_back( 1./(ww*ww) ); 
       s.push_back( hitp->GetLocalHitPos() );
-      ct.push_back( cos(aa) ); st.push_back( sin(aa) );
+      ct.push_back( cos(aa) ); 
+      st.push_back( sin(aa) );
 
       switch (lnum)
       {

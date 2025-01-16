@@ -79,6 +79,38 @@ public:
     if(mfiber_l6_==-1.0) count++;
     return count;
   }
+  bool isLayerEmpty(int lnum) const { // 1<=lnum<=6
+    switch (lnum)
+    {
+    case 1:
+      if(mfiber_l1_==-1.0) return true;
+      else return false;
+      break;
+    case 2:
+      if(mfiber_l2_==-1.0) return true;
+      else return false;
+      break;
+    case 3:
+      if(mfiber_l3_==-1.0) return true;
+      else return false;
+      break;
+    case 4:
+      if(mfiber_l4_==-1.0) return true;
+      else return false;
+      break;
+    case 5:
+      if(mfiber_l5_==-1.0) return true;
+      else return false;
+      break;
+    case 6:
+      if(mfiber_l6_==-1.0) return true;
+      else return false;
+      break;
+    default:
+      return false;
+      break;
+    }
+  }
   bool GoodForTracking( void ) const { return gftstatus_; }
   bool GoodForTracking( bool status )
   { bool ret=gftstatus_; gftstatus_=status; return ret; } 

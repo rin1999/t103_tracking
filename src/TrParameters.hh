@@ -14,7 +14,8 @@ struct TrPairPlaneInfo
   double CellSize;
 };
 
-const int MinNumOfHitsBFT = 6;
+const int MinNumOfHitsBFT = 5;
+const int ExcludingLayer  = 1; // 1originで除くレイヤを指定
 
 //Timing Ranges
 const double MinTimeTr[13] = {
