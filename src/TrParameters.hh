@@ -15,7 +15,7 @@ struct TrPairPlaneInfo
 };
 
 const int MinNumOfHitsBFT = 5;
-const int ExcludingLayer  = 1; // 1originで除くレイヤを指定
+const int ExcludingLayer  = 6; // 1originで除くレイヤを指定
 
 //Timing Ranges
 const double MinTimeTr[13] = {
