@@ -78,9 +78,10 @@ void bft_eff(const char* filename, int max_entries){
     const int nlayer = 6;
     const int nfiber = 256;
 
-    const int target_layer = 6;
+    const int target_layer = 3;
 
     //layer6
+    /*
     double x0_cut_0[2] = {-55., 46.}; // [0]:min, [1]:max
     double y0_cut_0[2] = {-50., 47.};
     double x0_shift[2] = {0., 0.};
@@ -92,6 +93,7 @@ void bft_eff(const char* filename, int max_entries){
     double u0_cut[2] = {u0_sigma*(-2.), u0_sigma*2.};
     double v0_cut[2] = {v0_sigma*(-2.), v0_sigma*2.};
     double tgtLayer_mfiber_cut[2] = {0., 250.};
+    */
 
     //layer5
     /*
@@ -124,11 +126,11 @@ void bft_eff(const char* filename, int max_entries){
     */
 
     //layer3
-    /*
+    
     double x0_cut_0[2] = {-55., 46.}; // [0]:min, [1]:max
     double y0_cut_0[2] = {-57., 50.};
-    double x0_shift[2] = {20., 20.};
-    double y0_shift[2] = {20., 20.};
+    double x0_shift[2] = {0., 0.};
+    double y0_shift[2] = {0., 0.};
     double x0_cut[2] = {x0_cut_0[0]+x0_shift[0], x0_cut_0[1]-x0_shift[1]}; // [0]:min, [1]:max
     double y0_cut[2] = {y0_cut_0[0]+y0_shift[0], y0_cut_0[1]-y0_shift[1]};
     double u0_sigma = 0.02502;
@@ -136,7 +138,7 @@ void bft_eff(const char* filename, int max_entries){
     double u0_cut[2] = {u0_sigma*(-2.), u0_sigma*2.};
     double v0_cut[2] = {v0_sigma*(-2.), v0_sigma*2.};
     double tgtLayer_mfiber_cut[2] = {0., 250.};
-    */
+    
 
     //layer2
     /*
@@ -154,7 +156,8 @@ void bft_eff(const char* filename, int max_entries){
     */
 
     // layer1
-    /*double x0_cut_0[2] = {-55., 48.}; // [0]:min, [1]:max
+    /*
+    double x0_cut_0[2] = {-55., 48.}; // [0]:min, [1]:max
     double y0_cut_0[2] = {-52., 52.};
     double x0_shift[2] = {0., 0.};
     double y0_shift[2] = {0., 0.};
@@ -293,7 +296,7 @@ void bft_eff(const char* filename, int max_entries){
     TH1F* h_u  = new TH1F("h_u","dx/dz at UTOF;dx/dz;counts", 200,-0.5,0.5);
     TH1F* h_v  = new TH1F("h_v","dy/dz at UTOF;dy/dz;counts", 200,-0.5,0.5);
     TH1F* h_tgt_hitfiber_when_cnh_0 = new TH1F("h_tgt_hitfiber_when_cnh_0", Form("fiberID of hit fibers in layer%d when cluster size is zero;fiberID;counts", target_layer), 512,0,256);
-    TH1F* h_hitmap_tgtLayer_withXYUVcut = new TH1F("h_hitmap_tgtLayer_withXYUVcut", Form("fiberID of hit fibers in layer%d with (x, y, dx/dz, dy/dz) cuts;fiberID;counts", target_layer), 512,0,256);
+    TH1F* h_hitmap_tgtLayer_withXYUVcut = new TH1F("h_hitmap_tgtLayer_withXYUVcut", Form("fiberID of hit fibers in layer%d with (x, y, dx/dz, dy/dz) cuts;fiberID;counts", target_layer), 256,0,256);
 
 
     cout << "[log] Start filling histograms" << endl;
@@ -392,7 +395,7 @@ void bft_eff(const char* filename, int max_entries){
     double labelsize_x = 0.04;
     double labelsize_y = 0.04;
 
-    gStyle -> SetOptStat(1110);
+    gStyle -> SetOptStat(10);
     gStyle -> SetPalette(kRainbow);
 
     c -> SetGrid();
