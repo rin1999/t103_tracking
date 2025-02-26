@@ -82,7 +82,7 @@ public:
    double dzdt( void ) const { return dzdt_; }
    double dzdu( void ) const { return dzdu_; }
 
-   double CalcWirePos_BFT( double wire ) const {
+   double CalcWirePos_BFT( double wire, int layer ) const {
       //fiberが1スタート
       /*
       double position;
@@ -131,10 +131,10 @@ public:
       
    }
    
-   double WirePos( double wire ) const { 
+   double WirePos( double wire, int layer ) const { 
       
-      double pos_wire = CalcWirePos_BFT(wire);
-      double pos_w0   = CalcWirePos_BFT(w0_);
+      double pos_wire = CalcWirePos_BFT(wire, layer);
+      double pos_w0   = CalcWirePos_BFT(w0_, layer);
 
       return pos_wire - pos_w0 + ofs_;
 
