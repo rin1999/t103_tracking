@@ -38,7 +38,7 @@ int LocalTrackSearch( const TrHitContainer * HC, std::vector <TrLocalTrack *> &T
   CandCont.resize(NumOfLayers);
 
   for( int i=0; i<NumOfLayers; ++i ){
-    if(i==ExcludingLayer-1 && MinNumOfHitsBFT==5)continue;
+    if(i==ExcludingLayer-1 && MinNumOfHitsBFT==5)continue; //見ているレイヤが除外対象 かつ exclusive trackingを行う場合
     MakeUnPairPlaneHitCluster( HC[i], CandCont[i] );
   }
   
