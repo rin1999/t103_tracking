@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "track_analyzer_ex.C": "cpp",
-        "bft_ltdc_analyze.C": "cpp"
+        "bft_ltdc_analyze.C": "cpp",
+        "track_analyzer.C": "cpp",
+        "track_analyzer_ex copy.C": "cpp",
+        "rescheck.C": "cpp"
     }
 }
