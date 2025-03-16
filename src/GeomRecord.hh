@@ -82,33 +82,23 @@ public:
    double dzdt( void ) const { return dzdt_; }
    double dzdu( void ) const { return dzdu_; }
 
-   double CalcWirePos_BFT( double wire, int layer ) const {
+   double CalcWirePos_BFT( int wire, int layer ) const {
       //layer1だけ特別処理を行う（layer4も追加した）
-      
+
       if(layer==301){ //layer1 の時
-         double split_start=119.0;
-         double split_end  =136.0;
+         int split_start=119;
+         int split_end  =136;
          if(wire < split_start){
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
-            if (std::floor(wire) == wire){ // wireが整数の場合
-               if ((int)wire % 2 == 1){ // wireが奇数の場合
-                  position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-               }
-               else{ // wireが偶数の場合
-                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_short;
-               }
+            if (wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
             }
-            else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-               if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_short / 2.0;
-               }
-               else{ // wireの整数部分が偶数の場合
-                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_short + dd_long / 2.0;
-               }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_short;
+            }
             
-            }
             return position;
             //return position + 2.0*dd_;
          }
@@ -116,75 +106,44 @@ public:
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
-            if (std::floor(wire) == wire){ // wireが整数の場合
-               if ((int)wire % 2 == 1){ // wireが奇数の場合
-                  position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-               }
-               else{ // wireが偶数の場合
-                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_short;
-               }
+            if (wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
             }
-            else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-               if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_short / 2.0;
-               }
-               else{ // wireの整数部分が偶数の場合
-                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_short + dd_long / 2.0;
-               }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_short;
             }
             return position + 1.0*dd_;
-            //return position + 3.0*dd_; // 後半は外れたファイバー分だけ位置がずれる
          }
          else{ // ここに分離部の処理
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
-            if (std::floor(wire) == wire){ // wireが整数の場合
-               if ((int)wire % 2 == 1){ // wireが奇数の場合
-                  position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-               }
-               else{ // wireが偶数の場合
-                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_long;
-               }
+            if (wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
             }
-            else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-               if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_long / 2.0;
-               }
-               else{ // wireの整数部分が偶数の場合
-                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_long + dd_short / 2.0;
-               }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_long;
             }
-            if(wire == 137.0){// fiberID 138 に存在すると考えているファイバー欠けの例外処理
-               position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_long;
-               position += 2.*dd_;
-            }
+            //if(wire == 137.0){// fiberID 138 に存在すると考えているファイバー欠けの例外処理
+            //   position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_long;
+            //   position += 2.*dd_;
+            //}
             return position;
             //return position + 2.0*dd_;
          }
       }
       else if(layer==304){ //layer4 の時
-         double split_start=130.0;
-         double split_end  =170.0;
+         int split_start=130;
+         int split_end  =170;
          if(wire < split_start){
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
-            if (std::floor(wire) == wire){ // wireが整数の場合
-               if ((int)wire % 2 == 1){ // wireが奇数の場合
-                  position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-               }
-               else{ // wireが偶数の場合
-                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_long;
-               }
+            if (wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
             }
-            else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-               if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_long / 2.0;
-               }
-               else{ // wireの整数部分が偶数の場合
-                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_long + dd_short / 2.0;
-               }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_long;
             }
             return position;
          }
@@ -192,132 +151,66 @@ public:
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
-            if (std::floor(wire) == wire){ // wireが整数の場合
-               if ((int)wire % 2 == 1){ // wireが奇数の場合
-                  position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-               }
-               else{ // wireが偶数の場合
-                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_short;
-               }
+            if ((int)wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
             }
-            else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-               if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_short / 2.0;
-               }
-               else{ // wireの整数部分が偶数の場合
-                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_short + dd_long / 2.0;
-               }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_short;
             }
             return position + 1.0*dd_;
-            //return position + 3.0*dd_; // 後半は外れたファイバー分だけ位置がずれる
          }
          else{ // ここに分離部の処理
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
-            if (std::floor(wire) == wire){ // wireが整数の場合
-               if ((int)wire % 2 == 1){ // wireが奇数の場合
-                  position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-               }
-               else{ // wireが偶数の場合
-                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_long;
-               }
+            if ((int)wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
             }
-            else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-               if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_long / 2.0;
-               }
-               else{ // wireの整数部分が偶数の場合
-                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_long + dd_short / 2.0;
-               }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_long;
             }
-            position = (wire - 1.0)/2.0;
             return position;
-            //return position + 2.0*dd_;
          }
       }
       else{//layer1, 4 以外
          double position;
          double dd_long = dd_*1.5;
          double dd_short= dd_*0.5;
-         if (std::floor(wire) == wire){ // wireが整数の場合
-            if ((int)wire % 2 == 1){ // wireが奇数の場合
-               position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-            }
-            else{ // wireが偶数の場合
-               position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_short;
-            }
+         if ((int)wire % 2 == 1){ // wireが奇数の場合
+            position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
          }
-         else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-            if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-               position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_short / 2.0;
-            }
-            else{ // wireの整数部分が偶数の場合
-               position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_short + dd_long / 2.0;
-            }
+         else{ // wireが偶数の場合
+            position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_short;
          }
          return position;
       }
-
-
-      /*
-      double position;
-      double dd_long = dd_*1.5;
-      double dd_short= dd_*0.5;
-      if (std::floor(wire) == wire){ // wireが整数の場合
-         if ((int)wire % 2 == 1){ // wireが奇数の場合
-            position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-         }
-         else{ // wireが偶数の場合
-            position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_short;
-         }
-      }
-      else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-         if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-            position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_short / 2.0;
-         }
-         else{ // wireの整数部分が偶数の場合
-            position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_short + dd_long / 2.0;
-         }
-      }
-      return position;
-      */
-
-      //偶奇反転バージョン
-      /*
-      double position;
-      double dd_long = dd_*1.5;
-      double dd_short= dd_*0.5;
-      if (std::floor(wire) == wire){ // wireが整数の場合
-         if ((int)wire % 2 == 1){ // wireが奇数の場合
-            position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
-         }
-         else{ // wireが偶数の場合
-            position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_long;
-         }
-      }
-      else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
-         if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-            position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_long / 2.0;
-         }
-         else{ // wireの整数部分が偶数の場合
-            position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_long + dd_short / 2.0;
-         }
-      }
-      return position;
-      */
-      
    }
    
+   
    double WirePos( double wire, int layer ) const { 
-
-      // 改造案
-      // 半整数ワイヤーの場合の処理をCalcWirePos_BFTに任せずにWirePos内で処理したい。
-      // つまり、CalcWirePos_BFTは整数値のfiberIDを受け付けて座標を返すだけの関数にしたい。
-      // （ちょっと現状だとCalcWirePos_BFTの中身が汚すぎる）
       
-      double pos_wire = CalcWirePos_BFT(wire, layer);
-      double pos_w0   = CalcWirePos_BFT(w0_, layer);
+      double pos_wire = 0;
+      double pos_w0   = 0;
+
+      if(wire == std::floor(wire)){
+         pos_wire = CalcWirePos_BFT((int)wire, layer);
+      }else{
+         int wire1 = (int) wire;
+         int wire2 = wire1 + 1;
+         double pos1 = CalcWirePos_BFT(wire1, layer);
+         double pos2 = CalcWirePos_BFT(wire2, layer);
+         pos_wire = (pos1 + pos2) / 2.0;
+      }
+      double wire0 = w0_;
+      if(wire0 == std::floor(wire0)){
+         pos_w0 = CalcWirePos_BFT((int)wire0, layer);
+      }else{
+         int wire1 = (int) wire0;
+         int wire2 = wire1 + 1;
+         double pos1 = CalcWirePos_BFT(wire1, layer);
+         double pos2 = CalcWirePos_BFT(wire2, layer);
+         pos_w0 = (pos1 + pos2) / 2.0;
+      }
 
       return pos_wire - pos_w0 + ofs_;
 
