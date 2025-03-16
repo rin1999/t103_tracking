@@ -83,11 +83,8 @@ public:
    double dzdu( void ) const { return dzdu_; }
 
    double CalcWirePos_BFT( double wire, int layer ) const {
-      //layer1だけ特別処理を行う
-      //それ以外はfiberID1-2間距離を0.25mmとして計算
-
-      //std::cout<<"layer:"<<layer<<std::endl;
-
+      //layer1だけ特別処理を行う（layer4も追加した）
+      
       if(layer==301){ //layer1 の時
          double split_start=119.0;
          double split_end  =136.0;
@@ -167,7 +164,7 @@ public:
          }
       }
       else if(layer==304){ //layer4 の時
-         double split_start=0.0;
+         double split_start=130.0;
          double split_end  =170.0;
          if(wire < split_start){
             double position;
@@ -178,20 +175,18 @@ public:
                   position = dd_long * (wire-1.0) / 2.0 + dd_short * (wire-1.0) / 2.0;
                }
                else{ // wireが偶数の場合
-                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_short;
+                  position = dd_long * (wire-2.0) / 2.0 + dd_short * (wire-2.0) / 2.0 + dd_long;
                }
             }
             else{ // wireが半整数の場合（一応wire=1.7とかの場合でも対応できるように書いておこう）
                if ((int)std::floor(wire) % 2 == 1){ // wireの整数部分が奇数の場合
-                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_short / 2.0;
+                  position = dd_long * ((double)std::floor(wire)-1.0) / 2.0 + dd_short * ((double)std::floor(wire)-1.0) / 2.0 + dd_long / 2.0;
                }
                else{ // wireの整数部分が偶数の場合
-                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_short + dd_long / 2.0;
+                  position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_long + dd_short / 2.0;
                }
-            
             }
             return position;
-            //return position + 2.0*dd_;
          }
          else if (split_end < wire){
             double position;
@@ -236,6 +231,7 @@ public:
                   position = dd_long * ((double)std::floor(wire)-2.0) / 2.0 + dd_short * ((double)std::floor(wire)-2.0) / 2.0 + dd_long + dd_short / 2.0;
                }
             }
+            position = (wire - 1.0)/2.0;
             return position;
             //return position + 2.0*dd_;
          }
@@ -314,6 +310,11 @@ public:
    }
    
    double WirePos( double wire, int layer ) const { 
+
+      // 改造案
+      // 半整数ワイヤーの場合の処理をCalcWirePos_BFTに任せずにWirePos内で処理したい。
+      // つまり、CalcWirePos_BFTは整数値のfiberIDを受け付けて座標を返すだけの関数にしたい。
+      // （ちょっと現状だとCalcWirePos_BFTの中身が汚すぎる）
       
       double pos_wire = CalcWirePos_BFT(wire, layer);
       double pos_w0   = CalcWirePos_BFT(w0_, layer);
