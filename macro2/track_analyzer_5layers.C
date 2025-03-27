@@ -20,8 +20,6 @@ using std::cout, std::endl, std::vector, std::array;
 #include <string>
 using std::string;
 
-std::vector<std::vector<double>> FindClosePairs(std::vector<double> a, std::vector<double> b);
-std::vector<double> FindValueBetweenPairs(std::vector<double> value_list, std::vector<std::vector<double>> pairs);
 
 string getFilenameFromFilepath(const char* filepath){
 

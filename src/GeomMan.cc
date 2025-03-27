@@ -147,7 +147,7 @@ double GeomMan::calcWirePosition( int lnum, double wire ) const
    static const std::string funcname = "[GeomMan::calcWirePosition()]";
    GeomRecord *pGeo = geomRecord_[lnum];
    if( pGeo ){
-      return pGeo->WirePos(wire);
+      return pGeo->WirePos(wire, lnum);
    }
    else{
       std::cerr << funcname << ": No record. Layer#=" 
