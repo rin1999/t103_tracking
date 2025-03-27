@@ -13,7 +13,8 @@ else
 fi
 
 # SSHキーを追加 (必要ならパスを変更)
-SSH_KEY="$HOME/.ssh/key_github"
+#SSH_KEY="$HOME/.ssh/key_github"
+SSH_KEY="$HOME/.ssh/github_key2"
 if [ -f "$SSH_KEY" ]; then
     echo "[log] ssh-add \"$SSH_KEY\" "
     ssh-add "$SSH_KEY"
