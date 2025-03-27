@@ -133,9 +133,10 @@ public:
          }
       }
       else if(layer==304){ //layer4 の時
-         int split_start=130;
-         int split_end  =170;
-         if(wire < split_start){
+         int border1=130;
+         int border2=160;
+         int border3=170;
+         if(wire < border1){
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
@@ -145,9 +146,35 @@ public:
             else{ // wireが偶数の場合
                position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_long;
             }
+            return position + dd_;
+         }
+         else if (border1<=wire && wire<border2){
+            double position;
+            double dd_long = dd_*1.5;
+            double dd_short= dd_*0.5;
+            if ((int)wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
+            }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_long;
+            }
+            position = wire*dd_;
             return position;
          }
-         else if (split_end < wire){
+         else if (border2<=wire && wire<border3){
+            double position;
+            double dd_long = dd_*1.5;
+            double dd_short= dd_*0.5;
+            if ((int)wire % 2 == 1){ // wireが奇数の場合
+               position = dd_long * ((double)wire-1.0) / 2.0 + dd_short * ((double)wire-1.0) / 2.0;
+            }
+            else{ // wireが偶数の場合
+               position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_long;
+            }
+            position = wire*dd_;
+            return position;
+         }
+         else if (border3 <= wire){
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
@@ -159,7 +186,7 @@ public:
             }
             return position + 1.0*dd_;
          }
-         else{ // ここに分離部の処理
+         else{ // 現状使用されないはず
             double position;
             double dd_long = dd_*1.5;
             double dd_short= dd_*0.5;
@@ -169,6 +196,7 @@ public:
             else{ // wireが偶数の場合
                position = dd_long * ((double)wire-2.0) / 2.0 + dd_short * ((double)wire-2.0) / 2.0 + dd_long;
             }
+            position = wire*dd_;
             return position;
          }
       }
@@ -186,7 +214,7 @@ public:
       }
    }
    
-   
+
    double WirePos( double wire, int layer ) const { 
       
       double pos_wire = 0;
